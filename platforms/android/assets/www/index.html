@@ -1,0 +1,983 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title>Activityo</title>
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    
+    <!-- i18n -->
+    <script src="js/i18n.js"></script>  
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+      
+    <!-- Facebook Login -->
+    <script src="js/ng-cordova-oauth.min.js"></script>
+     
+      
+    <!-- JR crop -->
+    <link rel="stylesheet" href="css/jr-crop.css">
+    <script src="js/jr-crop.js"></script>  
+
+    <!-- Ionic Content Banner -->
+
+    <link rel="stylesheet" href="js/ionic-content-banner/dist/ionic.content.banner.css">
+    <script src="js/ionic-content-banner/dist/ionic.content.banner.js"></script>
+
+    <script src="js/sha1.js"></script>
+      
+    <script src="js/ng-cordova.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen">
+    <script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="js/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen">
+    <script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+    <link rel="stylesheet" href="js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen">
+    <script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+
+      
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+    <!-- <script src="cordova.js"></script>  -->
+      
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/common.directives.js"></script>
+
+    <!-- google maps javascript -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC-RWj3kwgrOwrzb3hutEUNdsURufuNAW8&amp;libraries=places"></script>
+
+    <script src="js/ngAutocomplete.js"></script>
+
+
+
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <link rel="stylesheet" href="lib/ionic-datepicker/src/ionic-datepicker.styles.css">
+    <script src="lib/ionic-timepicker/dist/ionic-timepicker.bundle.min.js"></script>
+    <link rel="stylesheet" href="lib/ionic-datepicker/src/ionic-timepicker.styles.css">
+
+    <script src="lib/angular-google-places-autocomplete/src/autocomplete.js"></script>
+    <link rel="stylesheet" href="lib/angular-google-places-autocomplete/src/autocomplete.css">
+
+    <style>
+
+
+
+   .slider {
+          height: 100%;
+        }
+        .slider-slide {
+          padding-top: 80px;
+          color: #000;
+          background-color: #fff;
+          text-align: center;
+
+          font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+          font-weight: 300;
+        }
+
+        #logo {
+          margin: 30px 0px;
+        }
+
+        #list {
+          width: 170px;
+          margin: 30px auto;
+          font-size: 20px;
+        }
+        #list ol {
+          margin-top: 30px;
+        }
+        #list ol li {
+          text-align: left;
+          list-style: decimal;
+          margin: 10px 0px;
+        }
+
+        .button.ng-hide{
+          display:none;
+        }
+
+        #map {
+  width: 100%;
+  height: 50%;
+}
+
+        .sidemenu {
+
+background-color: #3f4045;
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        .thumbnail {
+
+
+
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
+
+
+        }
+
+        .scroll-bar-indicator
+{
+  display: none;
+}
+
+ 
+
+        .sidemenuicon:before {
+
+
+            font-size: 25px !important;
+            color:white;
+
+        }
+
+        .bar.bar-darkblue {
+
+            background-color:red;
+        }
+
+
+
+          @media screen and (max-width: 768px) {
+            .xsmall {
+
+              display:inherit !important;
+                
+            }
+           }
+
+           @media screen and (min-width: 768px) and (max-width: 1200px) {
+
+           
+            .small {
+
+              display:inherit !important;
+                
+            }
+           }
+
+
+           @media screen and (min-width: 1200px)  {
+            .large {
+
+              display:inherit !important;
+
+                
+            }
+
+            
+           }
+
+
+.pac-container {
+pointer-events:auto;
+}
+
+@media (min-width: 680px) {
+  .modal {
+    top: 0px !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {
+    margin-top: 20px;
+  }
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {
+    height: 64px;
+  }
+  .platform-ios.platform-cordova .modal-wrapper .modal .has-header,
+  .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
+    top: 64px;
+  }
+}
+    
+
+
+
+
+    </style>
+
+    
+
+
+       
+
+ 
+
+
+  </head>
+  <body ng-controller="MainCtrl as main" ng-app="starter" class="platform-android platform-cordova platform-webview">
+
+      <ion-nav-bar class="bar-positive">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+  
+    <ion-nav-view></ion-nav-view>
+        <script id="templates/intro.html" type="text/ng-template"> 
+            <ion-view  hide-nav-bar="true" view-title="Activityo">
+                <ion-nav-buttons side="left">
+                    <button class="button button-positive button-clear no-animation" ng-click="startApp()" ng-show="!slideIndex">
+                        Atla
+                    </button>
+                    <button class="button button-positive button-clear no-animation" ng-click="previous()" ng-show="slideIndex > 0">
+                        Geri
+                    </button>
+                </ion-nav-buttons>
+                <ion-nav-buttons side="right"> 
+                    <button class="button button-positive button-clear no-animation" ng-click="next()" ng-show="slideIndex != 2">
+                        İleri
+                    </button>
+                    <button class="button button-positive button-clear no-animation" ng-click="startApp()" ng-show="slideIndex == 2">
+                        Activityo'yu kullanmaya başla
+                    </button>
+                </ion-nav-buttons>
+                <ion-slide-box on-slide-changed="slideChanged(index)">
+                    <ion-slide style="background-color:#E3424D;padding-left:25px;padding-right:25px;padding-top:20px;">
+                        <h4>Activityo'ya hoşgeldiniz!</h4>
+                        <div>
+                            <img height="70%" src="img/iphone.png">
+                        </div>
+                        <p style="color:white;">
+                            Activityo insanların farklı kategorilerde etkinlik oluşturabildiği ve doğrudan buluşarak tanışabildiği bir platformdur.
+                        </p>
+                    </ion-slide>
+                    <ion-slide style="background-color:#02AB7B;padding-left:25px;padding-right:25px;padding-top:20px;">
+                        <h4>Sosyalleşmeye yepyeni bir yaklaşım!!</h4>
+                        <div>
+                            <img height="70%" src="img/iphone2.png">
+                        </div>
+                        <p style="color:white;">-Activityo sizi sanal hayattan gerçek hayata taşır.</p>
+                        <p style="color:white;">-Activityo ile arkadaş çevresi yapabilir, sevgili bulabilir ve eğlenebilirsiniz.</p>
+                    </ion-slide>
+                    <ion-slide style="background-color:#4093D6;padding-left:25px;padding-right:25px;padding-top:20px;">
+                        <h4>Sosyalleşmeye yepyeni bir yaklaşım!!</h4>
+                        <div>
+                            <img height="70%" src="img/iphone3.png">
+                        </div>
+                        <p style="color:white;">Sanal sosyal ağlardan ve flört sitelerinden artık sıkılmadınız mı?</p>
+                    </ion-slide>
+                    <ion-slide style="background-color:#C951D6;padding-left:25px;padding-right:25px;padding-top:20px;">
+                        <h4>Sanal dünyadan gerçek dünyaya geçmeye hazır mısın? </h4>
+                        <div>
+                            <img height="70%" src="img/iphone3.png">
+                        </div>
+                        <button class="button button-block button-positive " style="margin-top:10px; margin-left: auto; margin-right: auto; display: block;width:90%;" ng-click="startApp()" >
+                            Hemen Başla
+                        </button>
+                    </ion-slide>
+                </ion-slide-box>
+            </ion-view>
+        </script>
+
+        <script id="templates/main.html" type="text/ng-template">
+          <ion-view hide-back-button="true" view-title="Awesome">
+            <ion-content class="padding">
+              <h1>Main app here</h1>
+              <button class="button" ng-click="toIntro()">Do Tutorial Again</button>
+            </ion-content>
+          </ion-view>
+        </script>
+
+        <script id="my-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar style="background-color: {{myColor}}" class="bar bar-header bar-positive">
+                    <h1 class="title">Bu kullanıcı için referans ol</h1>
+                    <button class="button button-clear button-primary" ng-click="modal.hide()">İptal</button>
+                </ion-header-bar>
+                <ion-content >
+                    <label style="margin:20px;" class="item item-input">
+                        <textarea ng-model="formData.text" style="resize: none;height:200px" placeholder="Referans yorumunu yaz..."></textarea>
+                    </label>
+                    <button ng-click="be_reference()" class="button button-block button-positive " style="margin-top:50px; margin-left: auto; margin-right: auto; display: block;width:90%;" >
+                        Gönder
+                    </button>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <script id="eventdetails.html" type="text/ng-template">
+            <ion-modal-view >
+                <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                    <h1 class="title">{{translate('searchActivity')}}</h1>
+                    <button class="button button-clear button-primary" ng-click="modal.hide()">{{translate('cancel')}}</button>
+                </ion-header-bar>
+                <ion-content  >
+                <div style="padding-bottom:40px">
+                    <ion-list>
+                        <div class="item item-divider">
+                            {{translate('typeActivityName')}}
+                        </div>
+                        <label class="item item-input">
+                            <i class="icon ion-search placeholder-icon"></i>
+                            <input ng-model="search.eventName" type="text" placeholder="{{translate('activityName')}}">
+                        </label>
+                        <div class="item item-divider">
+                          {{translate('activityDistance')}}
+                        </div>
+                        <div class="item range">
+                          <b id="demo">{{search.distance}} km</b> &nbsp;&nbsp;&nbsp;
+                          <i class="icon ion-ios-minus"></i>
+                          <input  ng-model="search.distance" type="range" min="0" max="100" name="volume">
+                          <i class="icon ion-ios-plus"></i>
+                        </div>
+                        <div class="item item-divider">
+                            {{translate('activityCategories')}}
+                        </div>
+                        <ion-list>
+                            <ul class="list">
+                                <li class="item item-checkbox" ng-repeat="eventType in search.eventTypesList">
+                                   {{eventType.value}}
+                                   <label class="checkbox">
+                                        <input type="checkbox" ng-model="eventType.checked" ng-checked="{{eventType.checked}}"/>
+                                   </label>
+                                </li>
+                            </ul>
+                        </ion-list>
+                    </ion-list>  
+                    <button ng-click="searchEvent()" class="button button-block button-positive " style="margin-top:50px;margin-left: auto; margin-right: auto; display: block;width:95%;" >
+                        {{translate('search')}}
+                    </button>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <script id="editprofile.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                    <h1 class="title">{{translate('editProfile')}}</h1>
+                    <button class="button button-clear button-primary" ng-click="modal2.hide()">{{translate('cancel')}}</button>
+                </ion-header-bar>
+                <ion-content >
+                    <ul class="list">
+                        <li class="item" ng-click="openPopup('profile')"> 
+                            {{translate('uploadProfilePicture')}}
+                        </li>
+                        <li class="item" ng-click="openPopup('cover')"> 
+                            {{translate('uploadCoverPicture')}}
+                        </li>
+                        <li>
+                            <label style="margin:20px;" class="item item-input">
+                                <textarea ng-model="user.description" style="resize: none;height:200px" placeholder="{{translate('biography')}}">
+                                </textarea>
+                            </label>
+                        </li>
+                        <li>
+                            <button ng-click="updateProfile()" class="button button-block button-positive " style="margin-top:50px; margin-left: auto; margin-right: auto; display: block;width:90%;" >
+                                {{translate('save')}}
+                            </button>
+                        </li>
+                    </ul>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+    <script id="uploadprofilepicture.html" type="text/ng-template">
+        <ion-modal-view >
+            <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                <h1 class="title">{{translate('uploadProfilePicture')}}</h1>
+                <button class="button button-clear button-primary" ng-click="modal3.hide()">{{translate('cancel')}}</button>
+            </ion-header-bar>
+
+            <ion-content >
+                <div style="margin-top:50px;text-align:center;">
+                    <img width="400px" ng-src="{{pictureUrl}}">
+                </div>
+                <button ng-click="uploadPicture()" class="button button-block button-positive " style="margin-top:50px; margin-left: auto; margin-right: auto; display: block;width:90%;" >
+                    {{translate('upload')}}
+                </button>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+      <script id="finduser.html" type="text/ng-template">
+          <ion-modal-view >
+              <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                  <h1 class="title">{{translate('searchUser')}}</h1>
+                  <button class="button button-clear button-primary" ng-click="modal.hide()">{{translate('cancel')}}</button>
+              </ion-header-bar>
+              <ion-content >
+                  <ion-list>
+                      <form ng-submit="findUser()">
+                        <div class="item item-divider">
+                            {{translate('typeUserName')}}
+                        </div>
+                        <label class="item item-input">
+                            <i class="icon ion-search placeholder-icon"></i>
+                            <input ng-model="formData.text" type="text" placeholder="{{translate('userName')}}">
+                        </label>
+
+                        <button ng-click="findUser()" class="button button-block button-positive " style="margin-top:30px; margin-left: auto; margin-right: auto; display: block;width:95%;" >
+                         {{translate('search')}}    
+                        </button>
+                      </form>
+
+                     <div style="margin:20px;" >
+                      <ion-list class="item-border-off list-fav">
+                          <ion-item style="border-left: 0px; border-right: 0px;" class="item-remove-animate item-avatar" ng-repeat="user in formData.users track by user.id" ng-click="goProfile(user.id)">
+                              <img ng-src="{{user.image}}">
+                              <h2>{{user.name}}</h2>
+                              <ion-option-button ng-click="sendMessage(user.id)">
+                                  <i class="icon ion-ios-chatbubble-outline"></i>
+                              </ion-option-button>
+                          </ion-item> 
+                      </ion-list>
+                    </div>
+                </ion-list>     
+            </ion-content>
+        </ion-modal-view>
+      </script>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fancybox").fancybox();
+        });
+      </script>
+
+      <script id="reportuser.html" type="text/ng-template">
+          <ion-modal-view>
+            <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                <h1 class="title">Kullanıcıyı şikayet et</h1>
+                <button class="button button-clear button-primary" ng-click="modal5.hide()">İptal</button>
+            </ion-header-bar>
+            <ion-content >
+                <label style="margin:20px;" class="item item-input">
+                    <textarea ng-model="formData.text" style="resize: none;height:200px" placeholder="Neden bu kullanıcıyı şikayet ediyorsun?"></textarea>
+                </label>
+                <button ng-click="beReference()" class="button button-block button-positive " style="margin-top:50px; margin-left: auto; margin-right: auto; display: block;width:90%;" >
+                    Gönder
+                </button>
+            </ion-content>
+          </ion-modal-view>
+      </script>
+
+      <script id="acceptuser.html" type="text/ng-template">
+          <ion-modal-view>
+              <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                  <h1 class="title">{{translate('acceptParticipant')}}</h1>
+                  <button class="button button-clear button-primary" ng-click="modal2.hide()">{{translate('cancel')}}</button>
+              </ion-header-bar>
+              <ion-content >
+                 <div  >
+                    <ion-list class="">
+                        
+
+
+                          <div class="item item-avatar item-icon-right " ng-repeat="row in formData.eventRequestUsers" >
+                         <img ng-click="goProfile(row.user_id)" ng-src="{{row.image}}">
+                         <h2 style="margin-top:-3px" ng-click="goProfile(row.user_id)" style="margin-top:10px" >{{row.user_name}}</h2>
+                          <span style="color: grey;">{{row.event_name}}</span>
+                          
+                         <i style="margin-right:50px; font-size: 20px;" ng-click="rejectEventRequest(row.user_id, row.event_id, row.index)" class="icon ion-close"></i>
+                         <i style="font-size: 20px;" ng-click="acceptEventRequest(row.user_id, row.event_id, row.index)" class="icon ion-checkmark-round"></i>
+                        </div>
+
+                    </ion-list>
+                  </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+    <script id="followrequests.html" type="text/ng-template">
+          <ion-modal-view>
+              <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                  <h1 class="title">{{translate('followRequests')}}</h1>
+                  <button class="button button-clear button-primary" ng-click="modal3.hide()">{{translate('cancel')}}</button>
+              </ion-header-bar>
+              <ion-content >
+                
+                    <ion-list class="item-border-off list-fav">
+                        <div class="item item-avatar item-icon-right " ng-repeat="user in formData.followRequestUsers track by user.id" >
+                         <img ng-click="goProfile(user.id)" ng-src="{{user.image}}">
+                         <h2 ng-click="goProfile(user.id)" style="margin-top:10px" >{{user.name}}</h2>
+                          
+                         <i style="margin-right:50px; font-size: 20px;" ng-click="rejectFollowRequest(user.id)" class="icon ion-close"></i>
+                         <i style="font-size: 20px;" ng-click="acceptFollowRequest(user.id)" class="icon ion-checkmark-round"></i>
+                        </div>
+                    </ion-list>
+                
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+    <script id="googlemaps.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                <h1 class="title">{{translate('chooseAddress')}}</h1>
+                    <button class="button button-clear button-primary" ng-click="modal.hide()">{{translate('save')}}</button>
+            </ion-header-bar>
+            <ion-content >
+                <!-- list inset style -->
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{translate('activityAddress')}}" ng-model="event.address" id="eventAddress" class="form-control"  g-places-autocomplete data-tap-disabled="true" ng-change="disableTap()" autocomplete="on" focus-me >
+                    </label>
+                    <button style="margin-top:20px" onclick="clearinput()" class="button button-block button-positive">
+                        {{translate('clear')}}
+                    </button><br><br>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+       <script id="choosecolor.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar  class="bar bar-header bar-light">
+                <h1 class="title">{{translate('chooseColor')}}</h1>
+                    <button class="button button-clear button-primary" ng-click="modal.hide()">{{translate('cancel')}}</button>
+            </ion-header-bar>
+            <ion-content >
+
+                <ul class="list">
+
+                    <li style="background-color:#0066ff;" ng-click="makedarkblue()" class="item">
+                       <span style="color:white;">{{translate('navyBlue')}}</span>
+                    </li>
+                      <li style="background-color:#46C7F3;" ng-click="makedefault()" class="item">
+                       <span style="color:white;">{{translate('defaultColor')}}</span>
+                    </li>
+                    <li style="background-color:#00cc66;" ng-click="makegreen()" class="item">
+                      <span style="color:white;">{{translate('green')}}</span>
+                    </li>
+                     <li style="background-color:#cccc00;" ng-click="makeyellow()" class="item">
+                     <span style="color:black;">{{translate('yellow')}}</span>
+                    </li>  
+                     <li style="background-color:#ffc266;" ng-click="makeorange()" class="item">
+                       <span style="color:black;">{{translate('orange')}}</span>
+                    </li> 
+
+                    <li style="background-color:#ff704d;" ng-click="makered()" class="item">
+                      <span style="color:white;">{{translate('red')}}</span>
+                    </li>
+
+                </ul>
+       
+
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+    <script>
+
+      function clearinput(){
+
+           document.getElementById("eventAddress").value = "";
+
+        }
+
+
+    </script>
+      
+    <script id="notification.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar style="background-color: {{myColor}};" class="bar bar-header bar-positive">
+                <h1 class="title">Herkese Mesaj Gönder</h1>
+                <button class="button button-clear button-primary" ng-click="notificationModal.hide()">İptal</button>
+            </ion-header-bar>
+            <ion-content >
+                <label style="margin:20px;" class="item item-input">
+                    <input ng-model="notificationData.title" type="text" placeholder="Başlık">
+                </label>
+                <label style="margin:20px;" class="item item-input">
+                    <textarea ng-model="notificationData.message" style="resize: none;height:200px" placeholder="İçerik">
+                    </textarea>
+                </label>
+                <button ng-click="sendNotification()" class="button button-block button-positive " style="margin-top:50px; margin-left: auto; margin-right: auto; display: block;width:90%;" >
+                    Gönder
+                </button>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+
+  
+
+
+  </body>
+
+  <style ng-if="myColor=='#ff704d'" >
+
+            .bar.bar-positive {
+
+                 background-color: #ff704d;
+              }
+
+            .content .list .item-divider {
+            background-color:  #ff704d;
+            border: 0;
+            color: #fff; }  
+
+            .button.button-positive {
+            border-color: transparent;
+            background-color: #ff704d;
+            color: #fff; }
+            .button.button-positive:hover {
+              color: #fff;
+              text-decoration: none; }
+            .button.button-positive.active, .button.button-positive.activated {
+              background-color: #ff471a; }
+            .button.button-positive.button-clear {
+              border-color: transparent;
+              background: none;
+              box-shadow: none;
+              color: #ff704d; }
+            .button.button-positive.button-icon {
+              border-color: transparent;
+              background: none; }
+            .button.button-positive.button-outline {
+              border-color: #ff704d;
+              background: transparent;
+              color: #ff704d; }
+              .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+                background-color: #ff704d;
+                box-shadow: none;
+                color: #fff; } 
+
+              .messages .self .msg p {
+
+                background: #ff704d;
+              
+              }  
+
+              .messages .self .msg p:after {
+                  border-color: transparent #ff704d;
+                  border-width: 6px 0 6px 5px;
+                  left: inherit;
+                  right: -5px; }
+
+                  .bar-detail {
+                background: #ff704d;
+            }
+
+    </style>
+
+       <style ng-if="myColor=='#0066ff'" >
+
+            .bar.bar-positive {
+
+                 background-color:#0066ff;
+              } 
+
+              .content .list .item-divider {
+            background-color: #0066ff;
+            border: 0;
+            color: #fff; } 
+
+            .button.button-positive {
+            border-color: transparent;
+            background-color: #0066ff;
+            color: #fff; }
+            .button.button-positive:hover {
+              color: #fff;
+              text-decoration: none; }
+            .button.button-positive.active, .button.button-positive.activated {
+              background-color: #0052cc; }
+            .button.button-positive.button-clear {
+              border-color: transparent;
+              background: none;
+              box-shadow: none;
+              color: #0066ff; }
+            .button.button-positive.button-icon {
+              border-color: transparent;
+              background: none; }
+            .button.button-positive.button-outline {
+              border-color: #0066ff;
+              background: transparent;
+              color: #0066ff; }
+              .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+                background-color: #0066ff;
+                box-shadow: none;
+                color: #fff; }
+
+                 .messages .self .msg p {
+
+                background: #0066ff;
+              
+              }  
+
+              .messages .self .msg p:after {
+                  border-color: transparent #0066ff;
+                  border-width: 6px 0 6px 5px;
+                  left: inherit;
+                  right: -5px; }
+
+                  .bar-detail {
+                background: #0066ff;
+            }
+           
+            
+
+    </style>
+
+     <style ng-if="myColor=='#00cc66'" >
+
+            .bar.bar-positive {
+
+                 background-color:#00cc66;
+              } 
+
+              .content .list .item-divider {
+            background-color: #00cc66;
+            border: 0;
+            color: #fff; } 
+
+            .button.button-positive {
+            border-color: transparent;
+            background-color: #00cc66;
+            color: #fff; }
+            .button.button-positive:hover {
+              color: #fff;
+              text-decoration: none; }
+            .button.button-positive.active, .button.button-positive.activated {
+              background-color: #00994d; }
+            .button.button-positive.button-clear {
+              border-color: transparent;
+              background: none;
+              box-shadow: none;
+              color: #00cc66; }
+            .button.button-positive.button-icon {
+              border-color: transparent;
+              background: none; }
+            .button.button-positive.button-outline {
+              border-color: #00cc66;
+              background: transparent;
+              color: #00cc66; }
+              .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+                background-color: #00cc66;
+                box-shadow: none;
+                color: #fff; } 
+
+              .messages .self .msg p {
+
+                background: #00cc66;
+              
+              }  
+
+              .messages .self .msg p:after {
+                  border-color: transparent #00cc66;
+                  border-width: 6px 0 6px 5px;
+                  left: inherit;
+                  right: -5px; }
+
+                  .bar-detail {
+                background: #00cc66;
+            }
+   
+
+    </style>
+
+
+     <style ng-if="myColor=='#ffc266'" >
+
+            .bar.bar-positive {
+
+                 background-color:#ffc266;
+              } 
+
+              .content .list .item-divider {
+            background-color: #ffc266;
+            border: 0;
+            color: #fff; } 
+
+            .button.button-positive {
+            border-color: transparent;
+            background-color: #ffc266;
+            color: #fff; }
+            .button.button-positive:hover {
+              color: #fff;
+              text-decoration: none; }
+            .button.button-positive.active, .button.button-positive.activated {
+              background-color: #ffa31a; }
+            .button.button-positive.button-clear {
+              border-color: transparent;
+              background: none;
+              box-shadow: none;
+              color: #ffc266; }
+            .button.button-positive.button-icon {
+              border-color: transparent;
+              background: none; }
+            .button.button-positive.button-outline {
+              border-color: #ffc266;
+              background: transparent;
+              color: green; }
+              .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+                background-color: #ffc266;
+                box-shadow: none;
+                color: #fff; }  
+
+                 .messages .self .msg p {
+
+                background: #ffc266;
+              
+              }  
+
+              .messages .self .msg p:after {
+                  border-color: transparent #ffc266;
+                  border-width: 6px 0 6px 5px;
+                  left: inherit;
+                  right: -5px; }
+
+                  .bar-detail {
+                background: #ffc266;
+            }
+                
+    </style>
+
+
+     <style ng-if="myColor=='#cccc00'" >
+
+            .bar.bar-positive {
+
+                 background-color:#cccc00;
+              } 
+
+              .content .list .item-divider {
+            background-color: #cccc00;
+            border: 0;
+            color: #fff; } 
+
+            .button.button-positive {
+            border-color: transparent;
+            background-color: #cccc00;
+            color: #fff; }
+            .button.button-positive:hover {
+              color: #fff;
+              text-decoration: none; }
+            .button.button-positive.active, .button.button-positive.activated {
+              background-color: #999900; }
+            .button.button-positive.button-clear {
+              border-color: transparent;
+              background: none;
+              box-shadow: none;
+              color: #cccc00; }
+            .button.button-positive.button-icon {
+              border-color: transparent;
+              background: none; }
+            .button.button-positive.button-outline {
+              border-color: #cccc00;
+              background: transparent;
+              color: green; }
+              .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+                background-color: #cccc00;
+                box-shadow: none;
+                color: #fff; } 
+
+                 .messages .self .msg p {
+
+                background: #cccc00;
+              
+              }  
+
+              .messages .self .msg p:after {
+                  border-color: transparent #cccc00;
+                  border-width: 6px 0 6px 5px;
+                  left: inherit;
+                  right: -5px; }
+
+                  .bar-detail {
+                background: #cccc00;
+            }  
+
+    </style>
+
+    <style ng-if="myColor=='#46C7F3'" >
+
+            .bar.bar-positive {
+
+                 background-color:#46C7F3;
+              } 
+
+              .content .list .item-divider {
+            background-color: #46C7F3;
+            border: 0;
+            color: #fff; }  
+
+              .button.button-positive {
+            border-color: transparent;
+            background-color: #46C7F3;
+            color: #fff; }
+            .button.button-positive:hover {
+              color: #fff;
+              text-decoration: none; }
+            .button.button-positive.active, .button.button-positive.activated {
+              background-color: #16b9f0; }
+            .button.button-positive.button-clear {
+              border-color: transparent;
+              background: none;
+              box-shadow: none;
+              color: #46C7F3; }
+            .button.button-positive.button-icon {
+              border-color: transparent;
+              background: none; }
+            .button.button-positive.button-outline {
+              border-color: #46C7F3;
+              background: transparent;
+              color: green; }
+              .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+                background-color: #46C7F3;
+                box-shadow: none;
+                color: #fff; } 
+
+                  .messages .self .msg p {
+
+                background: #46C7F3;
+              
+              }  
+
+              .messages .self .msg p:after {
+                  border-color: transparent #46C7F3;
+                  border-width: 6px 0 6px 5px;
+                  left: inherit;
+                  right: -5px; }
+
+                  .bar-detail {
+                background: #46C7F3;
+            }
+
+    </style>
+
+
+
+
+
+
+
+
+
+</html>

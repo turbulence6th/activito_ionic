@@ -1,0 +1,24 @@
+<ion-view view-title="{{translate('createActivity')}}">
+    <ion-content>
+        <div class="content-edit">
+			<div class="content-img">
+                <div class="img-bg">
+					<a class="opt-image">
+						<i class="icon ion-ios-plus-outline"></i>
+					</a>
+					<img alt="">
+				</div>
+			</div>
+			<div class="list list-inset">
+                <a ng-click="openModal()"><button  class="button button-block button-outline button-positive">
+				    {{translate('clickForAddress')}}
+				</button></a>
+                <p style="color:gray;" ng-if="event.address" ><u>{{translate('chosenAddress')}}:</u> {{event.address}} </p><br><br>
+                <div id="map"></div><br>
+				<button class="button button-full  button-positive" ng-click="createEventButton()">
+                    {{translate('createActivity')}}
+				</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

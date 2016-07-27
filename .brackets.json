@@ -1,0 +1,14 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/turbulence6th/liyo/www/lib/ionic/js/angular/angular-resource.min.js",
+        "/home/turbulence6th/liyo/platforms/android/build/intermediates/assets/debug/www/lib/ionic/js/ionic.bundle.min.js",
+        "/home/turbulence6th/liyo/platforms/android/build/intermediates/assets/debug/www/lib/ionic/js/ionic.bundle.js",
+        "/home/turbulence6th/liyo/platforms/android/build/intermediates/assets/debug/www/cordova-js-src/android/nativeapiprovider.js",
+        "/home/turbulence6th/liyo/platforms/ios/www/lib/ionic/js/ionic.bundle.js",
+        "/home/turbulence6th/liyo/platforms/ios/www/cordova-js-src/exec.js",
+        "/home/turbulence6th/liyo/platforms/ios/www/cordova-js-src/platform.js",
+        "/home/turbulence6th/liyo/www/js/controllers.js",
+        "/home/turbulence6th/liyo/platforms/ios/www/lib/ionic/js/ionic.bundle.min.js",
+        "/home/turbulence6th/liyo/platforms/ios/www/lib/ionic/js/ionic-angular.js"
+    ]
+}

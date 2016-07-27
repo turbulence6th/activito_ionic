@@ -1,0 +1,39 @@
+<ion-view  view-title="{{translate('message')}}">
+    <ion-content  class="padding" start-y="430">
+        
+        <ion-refresher pulling-text="{{translate('oldMessages')}}" on-refresh="loadMoreMessages()">
+        </ion-refresher>
+        <!-- *messages / content messages -->
+        <ol class="messages" >
+            <!-- *other / container other messages -->
+            <li ng-class="getClassName(message)" ng-repeat="message in messageList track by message.id" >
+                <!-- *avatar / avatar image -->
+                <div class="avatar">
+                    <img ng-src="{{message.image}}">
+                </div>
+                <!-- *msg / messages -->
+                <div class="msg">
+                    <p>{{message.text}}</p>
+                    <!--
+                    <time>
+                        <span style="color:gray"> {{message.name}}  </span>
+                    </time>     -->
+                </div>
+            </li>
+        </ol>
+        
+        <div style="height:50px" >
+        
+        
+        </div>
+    </ion-content>
+    <!-- *bar-detail / color bar and input -->
+    <form ng-submit="sendMessage()">
+        <ion-footer-bar keyboard-attach class="item-input-inset bar-detail">
+            <label class="item-input-wrapper">
+            <input type="text" ng-model="text" placeholder="{{translate('typeMessage')}}" maxlength="1000"/>
+            </label>
+           <!-- <a class="button button-icon icon ion-arrow-return-left" ng-click="sendMessage()" ></a> -->
+        </ion-footer-bar>
+    </form>
+</ion-view>

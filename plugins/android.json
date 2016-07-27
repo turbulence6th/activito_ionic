@@ -1,0 +1,57 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "ionic-plugin-deploy": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.activityo"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.activityoios"
+        }
+    },
+    "dependent_plugins": {}
+}

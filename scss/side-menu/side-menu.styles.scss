@@ -1,0 +1,126 @@
+.menu-outer
+{
+  background-color: rgba($menu-bg, .9);
+  @include background-image(linear-gradient(left top, rgba($menu-bg-gradient-1, .99) 0%,rgba($menu-bg-gradient-2, .99) 19%,rgba($menu-bg-gradient-3, .9) 46%, rgba($menu-bg-gradient-4, .91) 53%, rgba($menu-bg-gradient-5, .95) 86%, rgba($menu-bg-gradient-6, .95) 100%));
+
+  ion-item
+  {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba($menu-color, .3);
+    color: rgba($menu-color, .8);
+
+    .item-content
+    {
+      background: transparent;
+
+      &.activated
+      {
+        border-color: transparent;
+        background-color: rgba(lighten($menu-bg, 20%), .2);
+      }
+    }
+
+    &.active
+    {
+      background: transparent;
+      border-color: rgba($menu-color, .3);
+
+      .item-content
+      {
+        background-color: rgba(darken($menu-bg, 20%), .1) !important;
+      }
+    }
+
+    .menu-icon
+    {
+      font-size: 22px;
+    }
+
+    .menu-text
+    {
+      color: $menu-color;
+      margin-left: -5px;
+    }
+  }
+
+  .heading-item
+  {
+    @include background-image(linear-gradient(top, rgba($menu-bg-gradient-1, .99) 0%, rgba(0,0,0, 0) 100%));
+    text-align: center;
+
+    .item-content
+    {
+      padding: $menu-top-options-padding;
+
+      .row
+      {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+    }
+
+    .user-image-outer
+    {
+      width: $menu-user-img-width;
+      @include calc(margin-left, "(100% - (#{$menu-user-img-width}))/2");
+      @include calc(margin-right, "(100& - (#{$menu-user-img-width}))/2");
+    }
+
+    .user-image
+    {
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    .greeting
+    {
+      color: $menu-color;
+      font-size: 22px;
+      margin: 0px;
+      font-weight: 400;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .message
+    {
+      color: rgba($menu-color, .6);
+    }
+  }
+
+  .menu-top-options,
+  .menu-bottom-options
+  {
+    padding: 0px;
+    margin: 0px;
+
+    .col
+    {
+      padding: 0px;
+    }
+  }
+
+  .menu-top-options
+  {
+    height: $menu-top-options-height;
+  }
+
+  .menu-bottom-options
+  {
+    height: (100 - $menu-top-options-height);
+
+    ion-item
+    {
+      &:first-child
+      {
+        border-top: 1px solid rgba($menu-color, .3);
+      }
+
+      &:last-child
+      {
+        border-bottom: none;
+      }
+    }
+  }
+}

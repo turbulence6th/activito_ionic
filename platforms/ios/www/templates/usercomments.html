@@ -1,0 +1,31 @@
+<!-- (*) assigned classes -->
+
+<ion-view view-title="Kullanıcıya yapılan referanslar">
+	
+	<ion-content>
+		<!-- *profile-bg / container image -->
+		
+		<!-- *content / container profile -->
+		<div class="content" style="margin-top: 0px !important;padding-top: 0px !important">
+			<!-- *profile-info / container data profile -->
+			
+			
+			<ion-list>
+				
+			<a class="item item-avatar" ng-repeat="comment in comments" >
+					<img src="img/profilephoto.jpg">
+      				<p>
+						<!-- *name -->
+      					<span class="name">{{comment.name}}</span>
+      					<br>
+      					<b class="">"{{comment.text}}"</b>
+      				</p>
+					<!-- *activity-time -->
+					<div class="activity-time">{{DateCalculate(comment.created_at)}} önce</div>
+			</a>
+				
+				
+			</ion-list>
+		</div>
+	</ion-content>
+</ion-view>

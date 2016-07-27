@@ -1,0 +1,59 @@
+/**
+ * Login
+ * --------------------------------------------------
+ */
+
+ .view-login {
+	background: $positive;
+	.logo {
+		text-align: center;
+		margin-top: 50px;
+		margin-bottom: 20px;
+	}
+	.list-inset {
+		background-color: $positive;
+		margin: 20px 25px;
+		.item.item-input input {
+			color: $dark;
+			padding-right: 0px;
+		}
+		.placeholder-icon {
+			color: $light;
+		    background: $royal;
+		    font-size: 1.5em;
+		    margin-right: 10px;
+		    min-height: 35px;
+		    min-width: 35px;
+		    padding: 0;
+		    text-align: center;
+		}
+	}
+	.list {
+		.item {
+			background-color: $light;
+			border: 0;
+			border-radius: 3px;
+			margin-bottom: 5px;
+		}
+		.item-input {
+			padding: 2px;
+		}
+		span {
+			color: $light;
+			display: block;
+			text-align: center;
+		}
+		p {
+			color: $light;
+			margin-top: 30px;
+			text-align: center;
+			font-weight: 300;
+		}
+		a {
+			color: $light;
+			text-align: center;
+			text-decoration: none;
+			font-weight: 500;
+		}
+	}
+ }

@@ -1,0 +1,20 @@
+<ion-view view-title="Kullanıcı Etkinlikleri">
+	<ion-content>
+		<div class="content" style="margin-top: 0px !important;padding-top: 0px !important">
+			<ion-list>
+				<a class="item item-avatar" ng-repeat="event in events track by event.id" href="#/tab/event/{{event.id}}"  >
+					<img src="{{url}}/category-{{ event.eventType }}.png">
+      				<p> 
+						<!-- *name -->
+      					<span class="name">{{user.name}}</span>
+      					<small ng-if="user.id==event.user_id">şu aktiviteye oluşturdu:  </small>
+                        <small ng-if="user.id!=event.user_id">şu aktiviteye katılıyor:  </small>
+      					<b class="">"{{event.name}}"</b>
+      				</p>
+					<!-- *activity-time -->
+					<div class="activity-time">{{DateCalculate(event.created_at)}} önce</div>
+				</a>
+			</ion-list>
+		</div>
+	</ion-content>
+</ion-view>

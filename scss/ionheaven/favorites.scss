@@ -1,0 +1,55 @@
+/**
+ * Favorites
+ * --------------------------------------------------
+ */
+
+.input-search {
+	.item {
+		&:first-child {
+			border-radius: 3px;
+		}
+		&:last-child {
+			border-radius: 3px;
+		}
+		&.item-input {
+			padding: 2px 0 2px 16px;
+		}
+	}
+}
+.list-fav {
+	.item-complex .item-content {
+		padding-top: 20px;
+	}
+	.item-avatar,.item-avatar .item-content {
+		min-height: 60px;
+	}
+	.item-avatar .item-content {
+		> img:first-child {
+			max-height: 45px;
+			max-width: 45px;
+			top: 8px;
+		}
+	}
+	.fav-on {
+		background-color: $balanced;
+		border: 2px solid #fff;
+		border-radius: 50%;
+		bottom: 10px;
+		height: 12px;
+		left: 48px;
+		position: absolute;
+		width: 12px;
+	}
+	.fav-away {
+		@extend .fav-on;
+		background-color: $energized;
+	}
+	.fav-busy {
+		@extend .fav-on;
+		background-color: $assertive;
+	}
+	.fav-off {
+		@extend .fav-on;
+		background-color: #E8E8E8;
+	}
+}

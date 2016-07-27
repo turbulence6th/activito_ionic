@@ -1,0 +1,27 @@
+// Menu - Colors
+$menu-bg: #473427;
+$menu-color: #F1F1F1;
+// Gradient: http://www.colorzilla.com/gradient-editor/#231811+0,473427+53,41362c+100&0.99+19,0.9+46,0.95+86;Custom
+ $menu-bg-gradient-1: #4F5763;
+// $menu-bg-gradient-1: #53a93f;
+// $menu-bg-gradient-1: #231811;
+// $menu-bg-gradient-1: hsl(351, 100%, 46%);
+// $menu-bg-gradient-1: hsl(0, 0%, 18%);
+$menu-bg-gradient-2: desaturate(lighten($menu-bg-gradient-1, 4%), 4%);
+$menu-bg-gradient-3: desaturate(lighten($menu-bg-gradient-1, 12%), 16%);
+$menu-bg-gradient-4: desaturate(lighten($menu-bg-gradient-1, 13%), 17%);
+$menu-bg-gradient-5: desaturate(lighten($menu-bg-gradient-1, 14%), 18%);
+$menu-bg-gradient-6: desaturate(lighten($menu-bg-gradient-1, 16%), 20%);
+
+// Menu - User image
+$menu-user-img-width: 25vw;
+$menu-user-img-ratio: 1 1;
+
+// Menu - Options
+$menu-top-options-height: 60vh;
+
+// Menu - Paddings/Margins
+$menu-top-options-padding: 16px;
+
+// Merge maps
+$pre-img-ratios: append($pre-img-ratios, $menu-user-img-ratio);

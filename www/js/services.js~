@@ -1,0 +1,105 @@
+angular.module('starter.services', [])
+
+.service('AppSettings', function($http, $timeout, $ionicLoading, $state, $ionicContentBanner, $rootScope){
+
+    var appStettings = this;
+    appStettings.sharedObject = {};
+
+    if(appStettings.sharedObject.firstrun == null){
+        appStettings.sharedObject.firstrun = new Date();
+        appStettings.sharedObject.flag = false;
+    }
+
+    this.url = "http://192.168.1.104:3000";
+
+    this.connectionError = function(error){    
+        if(error.data && error.data.require_session){
+            var pushToken = localStorage['pushToken'];
+            localStorage.clear();
+            localStorage['pushToken'] = pushToken;
+            $state.go('login');
+        }
+        timeElapsed = new Date() - appStettings.sharedObject.firstrun;
+        if(timeElapsed >= 10000 || appStettings.sharedObject.flag == false) {
+            $ionicContentBanner.show({
+                text: [$rootScope.translate('connectionProblem'), $rootScope.translate('checkConnection')],
+                interval: 3000,
+                autoClose: 6000,
+                type: 'error',
+                transition: 'vertical'
+            });
+
+            appStettings.sharedObject.firstrun = new Date();
+            appStettings.sharedObject.flag = true;
+        }
+    };
+    
+    this.removeByAttr = function(arr, attr, value){
+        var i = arr.length;
+        while(i--){
+           if( arr[i] 
+               && arr[i].hasOwnProperty(attr) 
+               && (arguments.length > 2 && arr[i][attr] === value ) ){ 
+               arr.splice(i,1);
+           }
+        }
+        return arr;
+    };
+    
+    this.version = "0.0.4";
+    this.googlePlay = "market://details?id=com.activityo";
+    this.appStore = 'itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id511364723?ls=1&mt=8'
+})
+
+.service('DateCalculate', function(){
+	this.DateCalculate = function (date) {
+    var seconds = Math.floor((new Date() - date) / 1000);
+    var interval = Math.floor(seconds / 31536000);
+    if (interval > 1) {
+        return interval + " yıl";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " ay";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " gün";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " saat";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " dakika";
+    }
+    return Math.floor(seconds) + " saniye";
+	}	
+})
+
+.factory('Camera', function($q) {
+
+   return {
+      getPicture: function(options) {
+         var q = $q.defer();
+         navigator.camera.getPicture(function(result) {
+            q.resolve(result);
+         }, function(err) {
+            q.reject(err);
+         }, options);
+         return q.promise;
+      }
+   }
+})
+
+.service('createEventVars', function() {
+    var createEventVars = this;
+    createEventVars.sharedObject = {};
+    createEventVars.getEvent = function(){
+        return createEventVars.sharedObject.event;
+    };
+    createEventVars.setEvent = function(event){
+        createEventVars.sharedObject.event = event;
+    };
+});

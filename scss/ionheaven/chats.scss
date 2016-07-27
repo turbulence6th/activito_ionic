@@ -1,0 +1,33 @@
+/**
+ * Chats
+ * --------------------------------------------------
+ */
+
+.online-on {
+	background: $balanced;
+	border-radius: 50%;
+	display: inline-block;
+	height: 6px;
+	margin-left: 3px;
+	vertical-align: middle;
+	width: 6px;
+}
+.online-off {
+	@extend .online-on;
+	background: #E8E8E8;
+}
+.time-list {
+	color: #A3A3A3 !important;
+	font-size: 12px !important;
+	padding-left: 15px;
+	position: absolute;
+	right: 11px;
+  	top: 2px;
+	.icon {
+		left: 0;
+		&:before {
+			font-size: 11px;
+			width: 12px;
+		}
+	}
+}

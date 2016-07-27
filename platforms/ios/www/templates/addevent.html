@@ -1,0 +1,37 @@
+<ion-view view-title="{{translate('createActivity')}}">
+    <ion-content>
+        <div class="content-edit">
+            <div class="content-img">
+              <div class="img-bg">
+			     <a class="opt-image">
+                     <i class="icon ion-ios-plus-outline"></i>
+				</a>
+				<img alt="">
+              </div>
+            </div>
+			<div class="list list-inset">
+				<label class="item item-input">
+					<input type="text" placeholder="{{translate('activityName')}}" ng-model="event.name">
+				</label>
+				<label class="item item-input item-select">
+				    <div class="input-label">
+				    	{{translate('activityType')}}
+				    </div>
+				    <select ng-model="event.eventType">
+				    	<option ng-repeat="eventType in eventTypes" value={{$index}}>{{ eventType }}</option>
+				    </select>
+				</label>
+				<label  ng-click="showdatepicker()" class="item item-input item-separator">
+					<span class="input-label" placeholder="Aktivite Başlangıç Tarihi"> {{event.startDate}}
+                    </span>
+                </label>
+                <label class="item item-input">
+					<textarea placeholder="{{translate('activityDescription')}}" rows="5" ng-model="event.description"></textarea>
+				</label>
+				<a class="button button-full  button-positive" ng-click="step1()" href="#/tab/addevent2">
+  				  {{translate('continue')}}
+				</a>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

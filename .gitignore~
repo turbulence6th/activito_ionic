@@ -1,0 +1,5 @@
+# Ignore bundler config.
+
+/config.xml
+
+# Ignore all logfiles and tempfiles.

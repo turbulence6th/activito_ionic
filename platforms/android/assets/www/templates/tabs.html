@@ -1,0 +1,68 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content drag-content="false">
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <!-- TABS -->
+        <ion-tabs  class="tabs-icon-only tabs-stable tabs-color-active-positive {{$root.hideTabs}}" > 
+            <!-- Events Tab -->
+            <ion-tab title="events" ng-click="main.onTabSelected(this)" icon-off="ion-ios-albums-outline" icon-on="ion-ios-albums-outline" ui-sref="tab.events">
+                <ion-nav-view name="tab-events"></ion-nav-view>
+            </ion-tab>
+            <!-- Account Tab -->
+            <ion-tab title="account" ng-click="main.onTabSelected(this, me.id)" icon-off="ion-ios-person-outline" icon-on="ion-ios-person-outline" ui-sref="tab.account({userId: me.id })" >
+                <ion-nav-view name="tab-account"></ion-nav-view>
+            </ion-tab>
+            <!-- Messages Tab -->
+            <ion-tab title="messages" ng-click="main.onTabSelected(this)" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes-outline" ui-sref="tab.messages" on-deselect="main.onTabDeselected()">
+                <ion-nav-view name="tab-messages"></ion-nav-view>
+            </ion-tab>
+            <!-- Settings Tab -->
+            <ion-tab title="settings" ng-click="main.onTabSelected(this)" icon-off="ion-ios-gear-outline"  icon-on="ion-ios-gear-outline" ui-sref="tab.settings" >
+                <ion-nav-view name="tab-settings"></ion-nav-view>
+            </ion-tab> 
+        </ion-tabs>
+    </ion-side-menu-content>
+    <!-- Side Menu (left) -->
+    <ion-side-menu side="left" class="sidemenu">
+        <ion-content has-bouncing="true" overflow-scroll="false" delegate-handle="side-menu">
+            <img ng-if="myImage" style="margin-top:30px; margin-left: auto; margin-right: auto; display: block;" width="40%" class="thumbnail" ng-src="{{myImage}}">
+            <img ng-if="!myImage" style="margin-top:30px; margin-left: auto; margin-right: auto; display: block;" width="40%" class="thumbnail" ng-src="img/default.png">
+            <p style="text-align:center;color:white; margin-top:20px;">{{me.name}}</p>
+            <ion-list style="background-color: transparent;">
+                <ion-item ng-click="openModal()" style="background-color: rgba(0,0,0,0);
+color: #FFFFFF;" menu-close ng-click="login()">
+                    <i style="color:white;" class="sidemenuicon button button-icon icon ion-search"> {{translate('searchUser')}}</i>
+                </ion-item>
+                <ion-item style="background-color: rgba(0,0,0,0);
+color: #FFFFFF;" menu-close ng-click="gotoprofile()">
+                    <i style="color:white;" class="sidemenuicon button button-icon icon ion-person"> {{translate('profile')}}</i>
+                </ion-item>
+                <ion-item style="background-color: rgba(0,0,0,0);
+color: #FFFFFF;" menu-close ng-click="gotomyevents()">
+                    <i style="color:white;" class="sidemenuicon button button-icon icon ion-ios-list"> {{translate('myActivities')}}</i>
+                </ion-item>
+                <ion-item style="background-color: rgba(0,0,0,0);
+color: #FFFFFF;" menu-close ng-click="openModal2()">
+                    <i style="color:white;" class="sidemenuicon button button-icon icon ion-checkmark-round"> {{translate('acceptParticipant')}}
+                    <span ng-if="eventRequestCount" class="badge badge-assertive">{{eventRequestCount}}</span> </i>
+                </ion-item>
+                <ion-item style="background-color: rgba(0,0,0,0);
+color: #FFFFFF;" menu-close ng-click="openModal3()">
+                    <i style="color:white;" class="sidemenuicon button button-icon icon ion-person-add" > {{translate('followRequests')}}
+                    <span ng-if="followRequestCount" class="badge badge-assertive">{{followRequestCount}}</span>
+                    </i>
+                </ion-item>
+                <ion-item style="background-color: rgba(0,0,0,0);
+color: #FFFFFF;" menu-close ng-click="gotosettings()">
+                    <i style="color:white;" class="sidemenuicon button button-icon ion-gear-a"> {{translate('settings')}}</i>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

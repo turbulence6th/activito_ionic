@@ -1,0 +1,12 @@
+/**
+ * General
+ * --------------------------------------------------
+ */
+
+.item-border-off {
+	.item {
+		&:first-child {
+			border-top: 0;
+		}
+	}
+}

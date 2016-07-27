@@ -1,0 +1,27 @@
+    <ion-view hide-back-button="{{hideBackButton}}" view-title="{{translate('activities')}}">
+    <ion-nav-buttons side="right">
+         <a class="button button-icon icon ion-ios-search-strong" ng-click="openModal()"></a>
+        <a class="button button-icon icon ion-ios-plus-outline" href="#/tab/addevent"></a>
+    </ion-nav-buttons>
+    <ion-content >
+        <ion-refresher pulling-text="{{translate('scrollDown')}}" on-refresh="refreshEvents()">
+        </ion-refresher>
+        <!-- *item-border-off / quit first border of the list item -->
+        <div class="list">
+            <a class="item item-thumbnail-left item-text-wrap" ng-repeat="event in events track by event.id" href="#/tab/event/{{event.id}}">
+                <img style="  margin: auto; position: absolute; top: 0;  bottom: 0; border-radius: 20px; " ng-src="{{event.image}}">
+
+               
+                <h2 class="xsmall" style="word-wrap: break-word;display:none;" >{{ event.name | limitTo: 70}}</h2>
+                <h2 class="small" style="word-wrap: break-word;display:none;" >{{ event.name  | limitTo: 135}}</h2>
+                <h2 class="large" style="word-wrap: break-word;display:none;" >{{ event.name  | limitTo: 200}}</h2>
+                <p>{{ event.address }}</p>
+                 <p style="color:#A4B5BA">
+                    {{ getDate(event.startDate) }}
+                </p>
+            </a>    
+            <ion-infinite-scroll immediate-check="false" ng-if="canBeLoaded" on-infinite="loadMoreEvents()" distance="1%">
+            </ion-infinite-scroll>
+        </div>
+    </ion-content>
+</ion-view>

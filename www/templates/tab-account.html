@@ -1,0 +1,114 @@
+<ion-view  hide-back-button="{{hideBackButton}}" view-title="{{translate('profile')}}">
+	<ion-content has-bouncing="true" overflow-scroll="false">
+      
+		<!-- *profile-bg / container image -->
+		<div class="profile-bg">
+			<img src="{{cover}}" style="width:100%" alt="">
+		</div>
+
+		  <ion-refresher style="margin-top:-150px" pulling-text="{{translate('scrollDown')}}" on-refresh="refresh()">
+        </ion-refresher>
+		<!-- *content / container profile -->
+		<div class="content">
+			<!-- *profile-info / container data profile -->
+			<div class="profile-info">
+				<!-- *profile-image / image profile -->
+				<a ng-if="image" class="fancybox" href="{{image}}"><img  ng-if="image" class="profile-image" ng-src="{{image}}"></a>
+                <a ng-if="!image" class="fancybox" href="img/default.png"><img  ng-if="!image" class="profile-image" ng-src="img/default.png"></a>
+				<!-- *profile-name / name profile -->
+				<h3 style="margin-bottom:10px" class="profile-name">{{user.name}}</h3>
+				<!-- *profile-description / description profile -->
+				<span class="profile-description">
+					{{user.description}}
+				</span>
+				<!-- *btn-social / button Follower / Following -->
+				<button ng-if="!followStatus" ng-click="openModal2()" class="button button-small icon-left ion-edit button-positive">{{translate('editProfile')}}</button>
+				
+		        <button style="margin-right:5px" ng-if="followStatus == 1" ng-click="followUser()" class="button button-small icon-left ion-person-add button-positive">{{translate('follow')}}</button>
+		        <button style="margin-right:5px" ng-if="followStatus == 2" ng-click="cancelRequest()" class="button button-small icon-left ion-person-add button-positive">{{translate('withdrawFollow')}}</button>
+                <button style="margin-right:5px" ng-if="followStatus == 3" ng-click="deleteFollow()" class="button button-small icon-left ion-person-add button-positive">{{translate('stopFollow')}}</button>
+                <button style="margin-right:5px" ng-if="followStatus" ng-click="sendMessage()" class="button button-small icon-left ion-chatbubble button-positive">{{translate('message')}}</button>
+                <button ng-if="followStatus" ng-click="openModal5()" class="button button-small icon-left ion-information-circled button-positive">{{translate('report')}}</button>
+                
+			</div>
+			<ion-list>
+				<!-- item divider -->
+				<div class="item item-divider">
+				    {{translate('lastActivities')}}
+					<!-- *view-more / link view more -->
+				    <a class="view-more" href="#/tab/account/{{user.id}}/events">
+				    	{{translate('more')}}
+				    	<i class="icon ion-chevron-right"></i>
+				  </a>
+				</div>
+				<a class="item item-avatar" ng-repeat="event in eventsofuser track by event.id" href="#/tab/event/{{event.id}}"  >
+					<img ng-src="{{url}}/category-{{event.eventType}}.png">
+      				<p> 
+						<!-- *name -->
+      					<span class="name">{{user.name}}</span>
+      					<small ng-if="user.id==event.user_id">şu aktiviteyi oluşturdu:  </small>
+                        <small ng-if="user.id!=event.user_id">şu aktiviteye katılıyor:  </small>
+      					<b class="">"{{event.name}}"</b>
+      				</p>
+					<!-- *activity-time -->
+					<div class="activity-time">{{DateCalculate(event.created_at)}} önce</div>
+				</a>
+				<p style="padding:16px" ng-hide="eventsofuser.length">{{translate('noActivity')}}</p>
+				<!-- item divider -->
+				<div class="item item-divider">
+				    {{translate('followers')}}
+                    <span style="background-color:#198EB5"class="badge badge-assertive">{{follows.length}}</span>
+				</div>
+				<!-- *follows / container follows -->
+				<ul ng-if="follows.length" style="margin-left:16px;margin-top:20px;margin-bottom:20px;" class="friends">
+					<li ng-repeat="follow in follows"><a href="#/tab/account/{{follow.id}}"><img  style="margin-top:5px;margin-right:5px" ng-src="{{follow.image}}"></a></li>
+				</ul>
+				<p style="padding:16px" ng-hide="follows.length">{{translate('noFollowers')}}</p>
+				<!-- item divider -->
+				<!-- <div class="item item-divider">
+				    Fotoğraflar
+				</div>
+				 photos / container photos -->
+			<!--	<ul class="photos">
+                    
+					<li><img src="img/photos/1.jpg" alt=""></li>
+					<li><img src="img/photos/2.jpg" alt=""></li>
+					<li><img src="img/photos/3.jpg" alt=""></li>
+					<li><img src="img/photos/4.jpg" alt=""></li>
+					<li><img src="img/photos/5.jpg" alt=""></li>
+					<li><img src="img/photos/6.jpg" alt=""></li>
+					<li><img src="img/photos/4.jpg" alt=""></li>
+					<li><img src="img/photos/5.jpg" alt=""></li>
+					<li><img src="img/photos/6.jpg" alt=""></li>
+                   
+				</ul> -->
+				<!-- <p style="padding:16px" ng-hide="photos.length">Bu kullanıcının henüz fotoğrafı yok!!</p> -->
+				<div class="item item-divider">
+				    {{translate('references')}}
+
+				      <span style="background-color:#198EB5"class="badge badge-assertive">{{references.length}}</span>
+					<!-- *view-more / link view more -->
+				   <!--  <a class="view-more" href="#/tab/usercomments">
+				    	Daha Fazla
+				    	<i class="icon ion-chevron-right"></i>
+				    </a> -->
+				</div>
+				<a class="item item-avatar" href="#/tab/account/{{reference.id}}" ng-repeat="reference in references" >
+					<img ng-src="{{reference.image}}">
+      				<p>
+						<!-- *name -->
+      					<span class="name">{{reference.name}}</span>
+      					<br>
+      					<b class="">"{{reference.text}}"</b>
+      				</p>
+					<!-- *activity-time -->
+					<div class="activity-time">{{DateCalculate(reference.created_at)}} önce</div>
+				</a>
+				<p style="padding:16px" ng-hide="references.length">{{translate('noReferences')}}</p>
+				<button ng-if="followStatus && !referenced" ng-click="openModal()" class="button button-block button-positive " style="margin-top:50px; margin-left: auto; margin-right: auto; display: block;width:90%;" >
+				  	{{translate('beReference')}}
+				</button>
+			</ion-list>
+		</div>
+	</ion-content>
+</ion-view>

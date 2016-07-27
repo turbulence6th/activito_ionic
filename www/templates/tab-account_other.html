@@ -1,0 +1,115 @@
+<!-- (*) assigned classes -->
+
+<ion-view  view-title="Profile">
+
+
+	
+	<ion-content>
+		<!-- *profile-bg / container image -->
+		<div class="profile-bg">
+			<img src="img/bg.jpg" alt="">
+		</div>
+		<!-- *content / container profile -->
+		<div class="content">
+			<!-- *profile-info / container data profile -->
+			<div class="profile-info">
+				<!-- *profile-image / image profile -->
+				<img class="profile-image" src="img/profilephoto.jpg">
+				<!-- *profile-name / name profile -->
+				<h3 class="profile-name">{{user.name}}</h3>
+				<!-- *profile-description / description profile -->
+				<span class="profile-description">
+					Hayat kısa kuşlar uçuyor...
+				</span>
+				<!-- *btn-social / button Follower / Following -->
+				<button class="button icon-left ion-person-add button-positive">Add to Friend</button>
+				<button class="button icon-left ion-information-circled button-positive">Report</button>
+
+			</div>
+			<br>
+			<ion-list>
+				<!-- item divider -->
+				<div class="item item-divider">
+				    Last Activities
+					<!-- *view-more / link view more -->
+				    <a class="view-more" href="#/tab/userevents">
+				    	view more
+				    	<i class="icon ion-chevron-right"></i>
+				  </a>
+				</div>
+				<a class="item item-avatar" ng-repeat="event in eventsofuser track by event.id" href="#/tab/event/{{event.id}}"  >
+					<img src="img/profilephoto.jpg">
+      				<p> 
+						<!-- *name -->
+      					<span class="name">{{user.name}}</span>
+      					<small>created </small>
+      					<b class="">"{{event.name}}"</b>
+      				</p>
+					<!-- *activity-time -->
+					<div class="activity-time">{{DateCalculate(event.created_at)}} ago</div>
+				</a>
+			
+			
+				<!-- item divider -->
+				<div class="item item-divider">
+				    Friends
+				</div>
+				<!-- *friends / container friends -->
+				<ul class="friends">
+					<li><a href="#/tab/account/{{friend.id}}"><img  src="img/48.jpg" alt="" ng-repeat="friend in friends" ></a></li>
+					
+				</ul>
+				<!-- item divider -->
+				<div class="item item-divider">
+				    Photos
+				    
+				</div>
+				<!-- *photos / container photos -->
+				<ul class="photos">
+					<li><img src="img/photos/1.jpg" alt=""></li>
+					<li><img src="img/photos/2.jpg" alt=""></li>
+					<li><img src="img/photos/3.jpg" alt=""></li>
+					<li><img src="img/photos/4.jpg" alt=""></li>
+					<li><img src="img/photos/5.jpg" alt=""></li>
+					<li><img src="img/photos/6.jpg" alt=""></li>
+					<li><img src="img/photos/4.jpg" alt=""></li>
+					<li><img src="img/photos/5.jpg" alt=""></li>
+					<li><img src="img/photos/6.jpg" alt=""></li>
+				</ul>
+
+				<div class="item item-divider">
+				    Comments
+
+				      <span style="background-color:#198EB5"class="badge badge-assertive">3</span>
+					<!-- *view-more / link view more -->
+				    <a class="view-more" href="#/tab/usercomments">
+				    	view more
+				    	<i class="icon ion-chevron-right"></i>
+				  </a>
+				</div>
+				<a class="item item-avatar" ng-repeat="comment in comments" >
+					<img src="img/profilephoto.jpg">
+      				<p>
+						<!-- *name -->
+      					<span class="name">{{comment.name}}</span>
+      					<br>
+      					<b class="">"{{comment.text}}"</b>
+      				</p>
+					<!-- *activity-time -->
+					<div class="activity-time">{{DateCalculate(comment.created_at)}} ago</div>
+				</a>
+			
+
+
+				<button ng-click="openModal()" class="button button-block button-positive " style="margin-top:50px; margin-left: auto; margin-right: auto; display: block;width:90%;" >
+  	
+				  	Write Comment
+					
+				</button>
+				
+			</ion-list>
+
+
+		</div>
+	</ion-content>
+</ion-view>

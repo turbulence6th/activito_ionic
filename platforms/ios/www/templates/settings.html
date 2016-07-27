@@ -1,0 +1,38 @@
+<!-- (*) assigned classes -->
+
+<ion-view hide-back-button="{{hideBackButton}}" view-title="{{translate('settings')}}">
+	
+	<ion-content has-bouncing="true" overflow-scroll="false">
+
+	 <ion-list>
+   
+   
+    <a class="item item-icon-left" href="#">
+    <i class="icon ion-loop"></i>
+    {{translate('updateProfile')}}
+    </a>
+     <a class="item item-icon-left" ng-click="openModal()" >
+    <i class="icon ion-android-color-palette"></i>
+    {{translate('changeColor')}}
+    </a>
+     <a class="item item-icon-left" ng-click="help()">
+    <i class="icon ion-help-circled"></i>
+    {{translate('help')}}
+  	</a>
+  	<a class="item item-icon-left" ng-click="aboutUs()" >
+    <i class="icon ion-information-circled"></i>
+    {{translate('credits')}}
+  	</a>
+  	<a class="item item-icon-left" ng-click="contact()" >
+    <i class="icon ion-ios-telephone"></i>
+    {{translate('contact')}}
+  	</a>
+    <a class="item item-icon-left" ng-click="logout()">
+    <i class="icon ion-log-out"></i>
+    {{translate('logout')}}
+    </a>
+
+    </ion-list>
+		
+	</ion-content>
+</ion-view>

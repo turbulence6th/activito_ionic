@@ -1,0 +1,52 @@
+/**
+ * Items
+ * --------------------------------------------------
+ */
+
+
+
+
+.item {
+	h2 {
+		color: $positive;
+	}
+	&.tabs.tabs-secondary {
+		border-top: 4px solid $positive !important;
+	}
+}
+
+// Link and Button Active States
+
+.item .item-content.activated {
+	background-color: #fafafa;
+}
+
+// Item Avatar
+//---------------------------------
+
+.item-avatar .item-content,
+.card .item-avatar {
+	> img:first-child {
+		top: 12px;
+		left: 12px;
+		max-width: 50px;
+	  	max-height: 50px;
+	}
+}
+
+// Item Option List
+//----------------------------------
+
+.item-options {
+	border-left: 5px solid $positive;
+	.button {
+		background-color: $royal;
+		color: $light;
+		i {
+			&:before {
+				font-size: 32px;
+				width: 32px;
+			}
+		}
+	}
+}
